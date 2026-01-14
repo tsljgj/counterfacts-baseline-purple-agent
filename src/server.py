@@ -24,20 +24,23 @@ def main():
     # See: https://a2a-protocol.org/latest/tutorials/python/3-agent-skills-and-card/
 
     skill = AgentSkill(
-        id="qa_answering",
-        name="Question Answering",
-        description="Answer questions using OpenAI's language model",
-        tags=["qa", "openai", "baseline"],
+        id="qa_answering_with_tools",
+        name="Advanced Question Answering",
+        description="Answer questions using AI with web search, web page visiting, and Python code execution capabilities",
+        tags=["qa", "web-search", "code-execution", "research", "baseline", "purple-agent"],
         examples=[
-            "What is the capital of France?",
-            "What is 2 + 2?",
-            "Who wrote Romeo and Juliet?"
+            "What is the current stock price of Apple?",
+            "Search for recent papers on quantum computing and summarize the key findings",
+            "Calculate the compound interest on $10,000 at 5% for 10 years",
+            "What are the latest developments in AI safety research?",
+            "Visit https://example.com and extract the main points",
+            "Write and execute code to find prime numbers between 1 and 100"
         ]
     )
 
     agent_card = AgentCard(
         name="AQA Baseline Purple Agent",
-        description="A simple baseline agent that answers questions using OpenAI GPT-4o-mini",
+        description="A baseline purple agent for AgentBeats competition that answers questions using AI with tools: web search (SerpAPI), web page visiting, and Python REPL execution. Designed for evaluation by green agents.",
         url=args.card_url or f"http://{args.host}:{args.port}/",
         version='1.0.0',
         default_input_modes=['text'],
