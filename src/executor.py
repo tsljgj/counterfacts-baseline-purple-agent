@@ -25,7 +25,8 @@ TERMINAL_STATES = {
 
 
 class Executor(AgentExecutor):
-    def __init__(self):
+    def __init__(self, model: str = None):
+        self.model = model  # Foundation model override (None = use env var)
         self.agents: dict[str, Agent] = {} # context_id to agent instance
 
     async def execute(self, context: RequestContext, event_queue: EventQueue) -> None:
@@ -44,7 +45,7 @@ class Executor(AgentExecutor):
         context_id = task.context_id
         agent = self.agents.get(context_id)
         if not agent:
-            agent = Agent()
+            agent = Agent(model=self.model)
             self.agents[context_id] = agent
 
         updater = TaskUpdater(event_queue, task.id, context_id)

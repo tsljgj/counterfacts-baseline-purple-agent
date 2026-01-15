@@ -18,6 +18,7 @@ def main():
     parser.add_argument("--host", type=str, default="127.0.0.1", help="Host to bind the server")
     parser.add_argument("--port", type=int, default=9009, help="Port to bind the server")
     parser.add_argument("--card-url", type=str, help="URL to advertise in the agent card")
+    parser.add_argument("--model", type=str, help="Foundation model to use (e.g., qwen/qwen-2.5-72b-instruct). Overrides AGENT_MODEL env var.")
     args = parser.parse_args()
 
     # AQA Baseline Purple Agent Card
@@ -50,7 +51,7 @@ def main():
     )
 
     request_handler = DefaultRequestHandler(
-        agent_executor=Executor(),
+        agent_executor=Executor(model=args.model),
         task_store=InMemoryTaskStore(),
     )
     server = A2AStarletteApplication(

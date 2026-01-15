@@ -11,13 +11,14 @@ from agent_wrapper import AQAAgentManager
 class Agent:
     """Purple agent that uses AQAAgentManager with web search, web visit, and code execution."""
 
-    def __init__(self):
+    def __init__(self, model: str = None):
         self.messenger = Messenger()
 
         # Initialize AQAAgentManager with configuration
         base_url = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
         api_key = os.getenv("OPENROUTER_API_KEY", "")
-        model = os.getenv("AGENT_MODEL", "qwen/qwen3-235b-a22b-2507")
+        # CLI --model overrides AGENT_MODEL env var
+        model = model or os.getenv("AGENT_MODEL", "qwen/qwen3-235b-a22b-2507")
 
         if not api_key:
             print("Warning: OPENROUTER_API_KEY not set. Agent will fail on requests.")
