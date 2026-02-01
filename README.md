@@ -1,4 +1,4 @@
-# AQA Baseline Purple Agent
+# Counterfacts Baseline Purple Agent
 
 A baseline purple agent for the [AgentBeats Competition](https://rdi.berkeley.edu/agentx-agentbeats) that uses the [A2A (Agent-to-Agent)](https://a2a-protocol.org/latest/) protocol. This agent serves as a baseline for testing green (evaluation) agents in the competition.
 
