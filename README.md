@@ -72,7 +72,7 @@ uv run src/server.py --host 0.0.0.0 --port 9009
 
 ```bash
 # Build the image
-docker build -t aqa-baseline-purple-agent .
+docker build -t counterfacts-baseline-purple-agent .
 
 # Run the container with environment variables
 docker run -p 9009:9009 \
@@ -80,10 +80,10 @@ docker run -p 9009:9009 \
   -e SERPAPI_API_KEY=your-key \
   -e TAVILY_API_KEY=your-key \
   -e OPENAI_API_KEY=your-key \
-  aqa-baseline-purple-agent
+  counterfacts-baseline-purple-agent
 
 # Or use an env file
-docker run -p 9009:9009 --env-file .env aqa-baseline-purple-agent
+docker run -p 9009:9009 --env-file .env counterfacts-baseline-purple-agent
 ```
 
 ## Testing
